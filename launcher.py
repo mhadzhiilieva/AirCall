@@ -4,16 +4,11 @@ import threading
 import time
 import ssl
 
-# Emotiv Cortex API WebSocket URL
 CORTEX_URL = "wss://localhost:6868"
 
-# WebSocket Server for Android communication
-ANDROID_WS_URL = "ws://192.168.1.100:8080"  # Change to your Android device's IP and port
+ANDROID_WS_URL = "ws://192.168.1.100:8080"  
+TILT_THRESHOLD = 30 
 
-# Head tilt detection threshold
-TILT_THRESHOLD = 30  # Adjust based on testing
-
-# Emotiv Cortex API Credentials
 CLIENT_ID = "U9DXXWkTQVrRzpLMiGTyxb3abKyrRmby2uac2mP9"
 CLIENT_SECRET = "YJA6uP62fs08DsJjm4jivnVsis4aO2rvfdysebDfdppIiQ3nzJc7VY6RCQC9OgA5wXETiEgh7aASoWex6g1yRlLevBMvPB3FCqfzj9Fl3UyxvH8JNvgLBxDl6UI2uEAI"
 
@@ -140,7 +135,6 @@ def connect_to_cortex():
         print("[ERROR] No headset found. Cannot proceed.")
         return
 
-    # Use the first headset (or choose another if necessary)
     headset_id = headsets[0]["id"]
     session_id = create_session(ws, token, headset_id)
     if not session_id:
