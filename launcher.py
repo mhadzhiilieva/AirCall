@@ -103,8 +103,8 @@ def on_message(ws, message):
     """Handles incoming messages from Cortex API."""
     print("[DEBUG] Received message:", message)
     data = json.loads(message)
-    if "mot" in data:  # Check if motion data is received
-        gyro_x, gyro_y = data["mot"][3], data["mot"][4]  # Extract gyro data
+    if "mot" in data:  
+        gyro_x, gyro_y = data["mot"][3], data["mot"][4]  
         print(f"Gyro Data - X: {gyro_x}, Y: {gyro_y}")
 
         if abs(gyro_x) > TILT_THRESHOLD or abs(gyro_y) < 0.4:
